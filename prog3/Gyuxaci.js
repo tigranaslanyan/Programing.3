@@ -1,4 +1,8 @@
-class Gyuxaci extends LivingCreature {
+const LivingCreature = require("./LivingCreature")
+const Grass = require("./Grass")
+let random = require("./random")
+
+module.exports = class Gyuxaci extends LivingCreature {
     constructor(x, y) {
         super(x,y)
         this.energy = 0

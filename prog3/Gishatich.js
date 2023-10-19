@@ -1,4 +1,7 @@
-class Gishatich extends LivingCreature {
+const LivingCreature = require("./LivingCreature")
+let random = require("./random")
+
+module.exports = class Gishatich extends LivingCreature {
     constructor(x, y) {
         super(x,y)
         this.energy = 0
