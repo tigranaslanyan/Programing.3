@@ -4,7 +4,7 @@ let random = require("./random")
 
 module.exports = class Gyuxaci extends LivingCreature {
     constructor(x, y) {
-        super(x,y)
+        super(x, y)
         this.energy = 0
         this.life = 8;
 
@@ -33,16 +33,17 @@ module.exports = class Gyuxaci extends LivingCreature {
         let xot = random(this.pntrel(1))
         this.energy--;
         this.life--
-        if (azat) {
-            let x = azat[0]
-            let y = azat[1]
+            if (azat) {
+                let x = azat[0]
+                let y = azat[1]
 
-            matrix[y][x] = 4
-            matrix[this.y][this.x] = 0
+                matrix[y][x] = 4
+                matrix[this.y][this.x] = 0
 
-            this.x = x;
-            this.y = y;
-        } else if (xot) {
+                this.x = x;
+                this.y = y;
+            } else
+        if (xot) {
             let x = xot[0]
             let y = xot[1]
 
@@ -59,8 +60,8 @@ module.exports = class Gyuxaci extends LivingCreature {
         let xotaker = random(this.pntrel(2))
         if (xotaker) {
             this.life++
-            this.energy++
-            let x = xotaker[0]
+                this.energy++
+                let x = xotaker[0]
             let y = xotaker[1]
 
             matrix[y][x] = 4
@@ -73,8 +74,8 @@ module.exports = class Gyuxaci extends LivingCreature {
         let gishatich = rnadom(this.pntrel(3))
         if (gishatich) {
             this.life++
-            this.energy++
-            let x = gishatich[0]
+                this.energy++
+                let x = gishatich[0]
             let y = gishatich[1]
 
 
@@ -91,24 +92,22 @@ module.exports = class Gyuxaci extends LivingCreature {
         let xot = random(this.pntrel(0))
         if (xot) {
             this.life++
-            this.energy++
-            let x = xot[0]
+                this.energy++
+                let x = xot[0]
             let y = xot[1]
 
             matrix[y][x] = 1
 
             grassner.push(new Grass(x, y))
-        }  
+        }
         if (this.energy >= 8) {
             this.spanel()
-        }
-
-        else {
+        } else {
             this.move()
             this.energy--
-            if (this.life === 0) {
-                this.die()
-            }
+                if (this.life === 0) {
+                    this.die()
+                }
         }
         if (this.energy === 8) {
             this.bazmacum()

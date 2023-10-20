@@ -1,5 +1,5 @@
-module.exports = class LivingCreature{
-    constructor(x, y){
+module.exports = class LivingCreature {
+    constructor(x, y) {
         this.x = x
         this.y = y
     }
@@ -18,4 +18,3 @@ module.exports = class LivingCreature{
         return found;
     };
 }
-

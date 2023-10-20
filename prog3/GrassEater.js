@@ -3,7 +3,7 @@ let random = require("./random")
 
 module.exports = class GrassEater extends LivingCreature {
     constructor(x, y) {
-        super(x,y)
+        super(x, y)
         this.energy = 0
         this.life = 5;
 
@@ -31,23 +31,23 @@ module.exports = class GrassEater extends LivingCreature {
         let azat = random(this.pntrel(0))
         this.energy--;
         this.life--
-        if (azat) {
-            let x = azat[0]
-            let y = azat[1]
-            matrix[y][x] = 2
-            matrix[this.y][this.x] = 0
+            if (azat) {
+                let x = azat[0]
+                let y = azat[1]
+                matrix[y][x] = 2
+                matrix[this.y][this.x] = 0
 
-            this.x = x;
-            this.y = y;
-        }
+                this.x = x;
+                this.y = y;
+            }
     }
 
     eat() {
         let xot = random(this.pntrel(1))
         if (xot) {
             this.life++
-            this.energy++
-            let x = xot[0]
+                this.energy++
+                let x = xot[0]
             let y = xot[1]
             matrix[y][x] = 2
             matrix[this.y][this.x] = 0
@@ -64,9 +64,9 @@ module.exports = class GrassEater extends LivingCreature {
         } else {
             this.move()
             this.energy--
-            if (this.life === 0) {
-                this.die()
-            }
+                if (this.life === 0) {
+                    this.die()
+                }
         }
         if (this.energy === 5) {
             this.bazmacum()
@@ -78,7 +78,7 @@ module.exports = class GrassEater extends LivingCreature {
         let azat = random(this.pntrel(0))
         if (azat && this.energy === 5) {
             this.life++
-            let x = azat[0]
+                let x = azat[0]
             let y = azat[1]
             matrix[y][x] = 2
             xotakerner.push(new GrassEater(x, y))
