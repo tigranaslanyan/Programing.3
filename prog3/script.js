@@ -1,8 +1,11 @@
 const socket = io()
 
-let side = 30
-let sideX = 30
-let sideY = 30
+let side = 10
+let sideX = 50
+let sideY = 50
+
+socket.on("update matrix", drawful)
+
 
 function randomXotaker() {
     for (let i = 0; i < 3; i++) {
@@ -16,12 +19,10 @@ function randomXotaker() {
     }
 }
 
+let randomxotaker = document.getElementById("randomxotaker")
+randomxotaker.addEventListener("click", randomXotaker)
 
-// let randomxotaker = document.getElementById("randomxotaker")
-// randomxotaker.addEventListener("click", randomXotaker())
-
-function
-randomXoter() {
+function randomXoter() {  
     for (let i = 0; i < 5; i++) {
         let x = Math.round(Math.random() * 100)
         let y = Math.round(Math.random() * 100)
@@ -32,6 +33,9 @@ randomXoter() {
         }
     }
 }
+
+let randomxoter = document.getElementById("randomxoter")
+randomxoter.addEventListener("click", randomXoter)
 
 function randomGishatich() {
     for (let i = 0; i < 7; i++) {
@@ -45,6 +49,9 @@ function randomGishatich() {
     }
 }
 
+let randomgishatich = document.getElementById("randomgishatich")
+randomgishatich.addEventListener("click", randomGishatich)
+
 function randomGyuxaci() {
     for (let i = 0; i < 9; i++) {
         let x = Math.round(Math.random() * 100)
@@ -56,6 +63,9 @@ function randomGyuxaci() {
         }
     }
 }
+
+let randomgyuxaci = document.getElementById("randomgyuxaci")
+randomxgyuxaci.addEventListener("click", randomGyuxaci)
 
 function setup() {
     createCanvas(sideX * side, sideY * side);
@@ -81,4 +91,3 @@ function drawful(matrix) {
     }
 }
 
-socket.on("update matrix", drawful)

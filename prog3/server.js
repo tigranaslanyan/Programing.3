@@ -17,10 +17,10 @@ grassner = []
 gishatich = []
 xotakerner = []
 let Grass = require("./Grass")
+let random = require("./random")
 let Gyuxaci = require("./Gyuxaci")
 let Gishatich = require("./Gishatich")
 let GrassEater = require("./GrassEater")
-
 
 function generate(a, b) {
     for (let i = 0; i < a; i++) {
