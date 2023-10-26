@@ -15,9 +15,12 @@ matrix = []
 gyuxaci = []
 grassner = []
 gishatich = []
+kaycakner = []
 xotakerner = []
+
 let Grass = require("./Grass")
 let random = require("./random")
+let Kaycak = require("./Kaycak")
 let Gyuxaci = require("./Gyuxaci")
 let Gishatich = require("./Gishatich")
 let GrassEater = require("./GrassEater")
@@ -26,13 +29,19 @@ function generate(a, b) {
     for (let i = 0; i < a; i++) {
         matrix.push([])
         for (let j = 0; j < b; j++) {
-            matrix[i].push(Math.round(Math.random() * 4))
-
+            matrix[i].push(random(4))
         }
+    }
+    for(let k = 0; k <= matrix[0].length; k++){
+        matrix[k][k+1] = 5
     }
 }
 
+
 generate(100, 100)
+
+
+
 
 function createGame() {
     function addObjects() {
@@ -50,6 +59,9 @@ function createGame() {
                 if (matrix[y][x] === 4) {
                     gyuxaci.push(new Gyuxaci(x, y))
                 }
+                if (matrix[y][x] === 5) {
+                    kaycakner.push(new Kaycak(x, y))
+                } 
             }
         }
     }
@@ -86,6 +98,11 @@ function startPLaying() {
 
 io.on('connection', function(socket) {
     socket.emit('update matrix', matrix)
+
     createGame()
     startPLaying()
+    socket.on("send kaycak", (isKaycak)=>{
+        console.log(isKaycak);
+    
+    })
 })

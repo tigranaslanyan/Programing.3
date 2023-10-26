@@ -4,8 +4,8 @@ let random = require("./random")
 module.exports = class GrassEater extends LivingCreature {
     constructor(x, y) {
         super(x, y)
-        this.energy = 0
-        this.life = 5;
+        this.energy = 5;
+        this.life = 10;
 
     };
 
@@ -46,8 +46,8 @@ module.exports = class GrassEater extends LivingCreature {
         let xot = random(this.pntrel(1))
         if (xot) {
             this.life++
-                this.energy++
-                let x = xot[0]
+            this.energy++
+            let x = xot[0]
             let y = xot[1]
             matrix[y][x] = 2
             matrix[this.y][this.x] = 0

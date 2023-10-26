@@ -3,69 +3,18 @@ const socket = io()
 let side = 10
 let sideX = 50
 let sideY = 50
+isKaycak = false
 
 socket.on("update matrix", drawful)
 
-
-function randomXotaker() {
-    for (let i = 0; i < 3; i++) {
-        let x = Math.round(Math.random() * 100)
-        let y = Math.round(Math.random() * 100)
-        if (matrix[y][x] == 0 || matrix[y][x] == 1) {
-
-            matrix[y][x] = 2
-            xotakerner.push(new GrassEater(x, y))
-        }
-    }
+function showKaycak(){ 
+    isKaycak = !isKaycak
+    socket.emit("send kaycak", isKaycak)
+ 
 }
 
-let randomxotaker = document.getElementById("randomxotaker")
-randomxotaker.addEventListener("click", randomXotaker)
-
-function randomXoter() {  
-    for (let i = 0; i < 5; i++) {
-        let x = Math.round(Math.random() * 100)
-        let y = Math.round(Math.random() * 100)
-        if (matrix[y][x] == 0) {
-
-            matrix[y][x] = 1
-            grassner.push(new Grass(x, y))
-        }
-    }
-}
-
-let randomxoter = document.getElementById("randomxoter")
-randomxoter.addEventListener("click", randomXoter)
-
-function randomGishatich() {
-    for (let i = 0; i < 7; i++) {
-        let x = Math.round(Math.random() * 100)
-        let y = Math.round(Math.random() * 100)
-        if (matrix[y][x] == 0 || matrix[y][x] == 1) {
-
-            matrix[y][x] = 3
-            gishatich.push(new Gishatich(x, y))
-        }
-    }
-}
-
-let randomgishatich = document.getElementById("randomgishatich")
-randomgishatich.addEventListener("click", randomGishatich)
-
-function randomGyuxaci() {
-    for (let i = 0; i < 9; i++) {
-        let x = Math.round(Math.random() * 100)
-        let y = Math.round(Math.random() * 100)
-        if (matrix[y][x] == 0 || matrix[y][x] == 1) {
-
-            matrix[y][x] = 4
-            gyuxaci.push(new Gyuxaci(x, y))
-        }
-    }
-}
-
-let randomgyuxaci = document.getElementById("randomgyuxaci")
-randomxgyuxaci.addEventListener("click", randomGyuxaci)
+let kaycak = document.getElementById("kaycak")
+kaycak.addEventListener("click", showKaycak)
 
 function setup() {
     createCanvas(sideX * side, sideY * side);
@@ -85,6 +34,10 @@ function drawful(matrix) {
                 fill("red");
             } else if (matrix[y][x] == 4) {
                 fill("brown");
+            } else if (matrix[y][x] == 5)  {
+                if(isKaycak == true){
+                fill("blue")
+                }
             }
             rect(x * side, y * side, side, side);
         }

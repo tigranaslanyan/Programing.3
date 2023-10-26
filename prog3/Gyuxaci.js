@@ -33,17 +33,16 @@ module.exports = class Gyuxaci extends LivingCreature {
         let xot = random(this.pntrel(1))
         this.energy--;
         this.life--
-            if (azat) {
-                let x = azat[0]
-                let y = azat[1]
+        if (azat) {
+            let x = azat[0]
+            let y = azat[1]
 
-                matrix[y][x] = 4
-                matrix[this.y][this.x] = 0
+            matrix[y][x] = 4
+            matrix[this.y][this.x] = 0
 
-                this.x = x;
-                this.y = y;
-            } else
-        if (xot) {
+            this.x = x;
+            this.y = y;
+        } else if (xot) {
             let x = xot[0]
             let y = xot[1]
 
@@ -71,7 +70,7 @@ module.exports = class Gyuxaci extends LivingCreature {
             this.y = y
 
         }
-        let gishatich = rnadom(this.pntrel(3))
+        let gishatich = random(this.pntrel(3))
         if (gishatich) {
             this.life++
                 this.energy++
