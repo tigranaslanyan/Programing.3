@@ -32,9 +32,9 @@ function generate(a, b) {
             matrix[i].push(random(4))
         }
     }
-    for(let k = 0; k <= matrix[0].length; k++){
-        matrix[k][k+1] = 5
-    }
+    // for (let k = 0; k <= matrix[0].length; k++) {
+    //     matrix[k][k + 1] = 5
+    // }
 }
 
 
@@ -61,7 +61,7 @@ function createGame() {
                 }
                 if (matrix[y][x] === 5) {
                     kaycakner.push(new Kaycak(x, y))
-                } 
+                }
             }
         }
     }
@@ -89,20 +89,27 @@ function playGame() {
 
 let intervalId;
 
+let timing = 3000
+    // if (dzmer == true) {
+    //     timing = 5000
+    // }
+
 function startPLaying() {
     clearInterval(intervalId)
     intervalId = setInterval(() => {
         playGame()
-    }, 1000);
+    }, timing);
 }
 
 io.on('connection', function(socket) {
     socket.emit('update matrix', matrix)
-
     createGame()
     startPLaying()
-    socket.on("send kaycak", (isKaycak)=>{
+    socket.on("send kaycak", (isKaycak) => {
         console.log(isKaycak);
-    
+
+    })
+    socket.on("change weather", (dzmer) => {
+        console.log(dzmer);
     })
 })
