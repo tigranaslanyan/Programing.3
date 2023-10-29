@@ -19,8 +19,7 @@ module.exports = class Grass extends LivingCreature {
 
     bazmacum() {
         this.age++
-            let azat = random(this.pntrel(0))
-                // console.log(azat);
+        let azat = random(this.pntrel(0))
         if (azat && this.age > 3) {
             let x = azat[0]
             let y = azat[1]

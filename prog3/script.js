@@ -16,20 +16,20 @@ weather.addEventListener("click", changeWeather)
 
 socket.on("update matrix", drawful)
 
-// function showKaycak(){ 
-//    isKaycak = !isKaycak
-//    socket.emit("send kaycak", isKaycak)
-// }
+function showKaycak(){ 
+   isKaycak = !isKaycak
+   socket.emit("send kaycak", isKaycak)
+}
 
-// let kaycak = document.getElementById("kaycak")
-// kaycak.addEventListener("click", showKaycak)
+let kaycak = document.getElementById("kaycak")
+kaycak.addEventListener("click", showKaycak)
 
 function setup() {
     createCanvas(sideX * side, sideY * side);
     background('#acacac');
 }
 
-function drawful(matrix) {
+function drawful(matrix) { console.log('matrix', matrix)
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
             if (matrix[y][x] == 1 && dzmer == false) {
@@ -53,3 +53,38 @@ function drawful(matrix) {
         }
     }
 }
+
+var data = {}
+
+function countAllChar() {
+    var allGrassCount = 0;
+    var allGrassEaterCount = 0;
+
+    for (var y = 0; y < initialMatrix.length; y++) {
+        for (var x = 0; x < initialMatrix[y].length; x++) {
+            if (initialMatrix[y][x] == 1) {
+                allGrassCount++;
+                data.allGrass = allGrassCount
+            }
+            if (initialMatrix[y][x] == 2) {
+                allGrassEaterCount++;
+                data.allGrassEater = allGrassEaterCount
+            }
+        }
+    }
+
+    return data
+}
+
+    socket.emit("Total statistics", countAllChar)
+    socket.on('display statistics', (data) => {
+        statistics = data
+
+        var updatedText = '';
+        for (var key in statistics) {
+            updatedText += '\n' + key + ' ' + statistics[key];
+        }
+        p.innerText = updatedText;
+
+
+    })
